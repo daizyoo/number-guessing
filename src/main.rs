@@ -1,5 +1,3 @@
-mod random;
-
 use rand::{thread_rng, Rng};
 
 fn main() {
