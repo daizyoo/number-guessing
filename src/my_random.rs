@@ -139,27 +139,7 @@ macro_rules! number {
     };
 }
 
-number!( u16 u32 u64 u128 i8 i16 i32 i64 i128 usize isize);
-
-impl Number for u8 {
-    fn new<N: Num>(n: u128) -> N {
-        let mut num = N::zero();
-        for _ in 0..n {
-            num = num.add(N::one());
-        }
-        num
-    }
-    fn digit(&self) -> usize {
-        self.to_string().chars().count()
-    }
-    fn add_digit(&self, rhs: Self) -> Self {
-        let result = rhs.to_string() + &self.to_string();
-        result.trim().parse().unwrap()
-    }
-    fn sub_digit(&mut self) {
-        self.to_string().pop();
-    }
-}
+number!(u8 u16 u32 u64 u128 i8 i16 i32 i64 i128 usize isize);
 
 #[cfg(test)]
 mod test {
